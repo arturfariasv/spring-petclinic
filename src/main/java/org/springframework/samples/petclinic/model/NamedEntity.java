@@ -39,7 +39,7 @@ public class NamedEntity extends BaseEntity {
 		return this.name;
 	}
 
-	public void setName(@Nullable String name) {
+	public void setName(@Nullable String newName) {
 		this.name = name;
 	}
 

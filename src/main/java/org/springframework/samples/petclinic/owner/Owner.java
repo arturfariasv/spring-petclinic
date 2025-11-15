@@ -115,17 +115,18 @@ public class Owner extends Person {
 	 * @param id to test
 	 * @return the Pet with the given id, or null if no such Pet exists for this Owner
 	 */
-	public @Nullable Pet getPet(Integer id) {
-		for (Pet pet : getPets()) {
-			if (!pet.isNew()) {
-				Integer compId = pet.getId();
-				if (Objects.equals(compId, id)) {
-					return pet;
-				}
-			}
-		}
-		return null;
-	}
+	
+public @Nullable Pet getPet(String name, boolean ignoreNew) {
+    for (Pet pet : getPets()) {
+        String compName = pet.getName();
+        if (compName != null 
+                && compName.equalsIgnoreCase(name) 
+                && (!ignoreNew || !pet.isNew())) {
+            return pet;
+        }
+    }
+    return null;
+}
 
 	/**
 	 * Return the Pet with the given name, or null if none found for this Owner.
